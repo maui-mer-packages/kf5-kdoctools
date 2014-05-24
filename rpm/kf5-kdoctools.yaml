@@ -1,0 +1,81 @@
+Name         : kf5-kdoctools
+Version      : 4.99.0
+Release      : 1
+Group        : System/Base
+License      : GPLv2+
+Summary      : KDE Frameworks 5 Tier 2 addon for documentation
+Description  : |
+  Provides tools to generate documentation in various format from DocBook files.
+URL          : http://www.kde.org
+SetupOptions : -q -n %{name}-%{version}/upstream
+
+Sources:
+    - "%{name}-%{version}.tar.xz"
+
+Patches:
+    - kdoctools-improve-error-reporting-in-meinproc.patch
+
+RpmLintIgnore:
+    - devel-file-in-non-devel-package
+    - no-changelogname-tag
+    - library-without-ldconfig-postin
+    - library-without-ldconfig-postun
+
+Configure    : none
+Builder      : none
+
+PkgBR:
+    - kf5-rpm-macros
+    - extra-cmake-modules
+    - qt5-tools
+    - docbook-dtds
+    - docbook-style-xsl
+    - kf5-karchive-devel
+PkgConfigBR:
+    - Qt5Core
+    - Qt5DBus
+    - Qt5Xml
+    - Qt5Network
+    - Qt5Gui
+    - Qt5Widgets
+    - Qt5Concurrent
+    - Qt5Test
+    - libxml-2.0
+    - libxslt
+Requires:
+    - kf5-filesystem
+    - docbook-dtds
+    - docbook-style-xsl
+
+RequiresPost:
+    - /sbin/ldconfig
+RequiresPostUn:
+    - /sbin/ldconfig
+
+Files:
+    - "%doc COPYING.LIB README.md"
+    - "%{_kf5_bindir}/checkXML5"
+    - "%{_kf5_bindir}/meinproc5"
+    - "%{_kf5_datadir}/man/*"
+    - "%{_kf5_datadir}/kf5/kdoctools/customization"
+
+SubPackages:
+    - Name: devel
+      Group: Development/Libraries
+      Summary: Development files for %{name}
+      Description: |
+        The %{name}-devel package contains the files necessary to develop applications |
+        that use %{name}.
+      Requires:
+          - kf5-karchive-devel
+      Files:
+          - "%{_kf5_includedir}/XsltKde/*"
+          - "%{_kf5_libdir}/libKF5XsltKde.a"
+          - "%{_kf5_libdir}/cmake/KF5DocTools"
+    - Name: doc
+      Group: System/Libraries
+      Summary: User documentation and help for %{name}
+      Description: |
+        Documentation and user help for %{name}.
+      Files:
+          - "%{_kf5_docdir}/HTML/*/kdoctools5-common"
