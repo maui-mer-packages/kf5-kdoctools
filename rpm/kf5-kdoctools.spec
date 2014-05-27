@@ -17,7 +17,6 @@ URL:        http://www.kde.org
 Source0:    %{name}-%{version}.tar.xz
 Source100:  kf5-kdoctools.yaml
 Source101:  kf5-kdoctools-rpmlintrc
-Patch0:     kdoctools-improve-error-reporting-in-meinproc.patch
 Requires:   kf5-filesystem
 Requires:   docbook-dtds
 Requires:   docbook-style-xsl
@@ -67,8 +66,6 @@ Documentation and user help for %{name}.
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
-# kdoctools-improve-error-reporting-in-meinproc.patch
-%patch0 -p1
 # >> setup
 # << setup
 

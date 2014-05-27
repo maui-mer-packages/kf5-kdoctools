@@ -12,9 +12,6 @@ SetupOptions : -q -n %{name}-%{version}/upstream
 Sources:
     - "%{name}-%{version}.tar.xz"
 
-Patches:
-    - kdoctools-improve-error-reporting-in-meinproc.patch
-
 RpmLintIgnore:
     - devel-file-in-non-devel-package
     - no-changelogname-tag
