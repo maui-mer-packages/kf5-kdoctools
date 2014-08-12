@@ -1,5 +1,5 @@
-Name         : kf5-kdoctools
-Version      : 5.0.0
+Name         : kdoctools
+Version      : 5.1.0
 Release      : 1
 Group        : System/Base
 License      : GPLv2+
@@ -27,7 +27,7 @@ PkgBR:
     - qt5-tools
     - docbook-dtds
     - docbook-style-xsl
-    - kf5-karchive-devel
+    - karchive-devel
 PkgConfigBR:
     - Qt5Core
     - Qt5DBus
@@ -53,8 +53,8 @@ Files:
     - "%doc COPYING.LIB README.md"
     - "%{_kf5_bindir}/checkXML5"
     - "%{_kf5_bindir}/meinproc5"
-    - "%{_kf5_datadir}/man/*"
-    - "%{_kf5_datadir}/kf5/kdoctools/customization"
+    - "%{_mandir}/*"
+    - "%{_kf5_datadir}/kdoctools/customization"
 
 SubPackages:
     - Name: devel
@@ -64,15 +64,15 @@ SubPackages:
         The %{name}-devel package contains the files necessary to develop applications |
         that use %{name}.
       Requires:
-          - kf5-karchive-devel
+          - karchive-devel
       Files:
           - "%{_kf5_includedir}/XsltKde/*"
           - "%{_kf5_libdir}/libKF5XsltKde.a"
-          - "%{_kf5_libdir}/cmake/KF5DocTools"
+          - "%{_kf5_cmakedir}/KF5DocTools"
     - Name: doc
       Group: System/Libraries
       Summary: User documentation and help for %{name}
       Description: |
         Documentation and user help for %{name}.
       Files:
-          - "%{_kf5_docdir}/HTML/*/kdoctools5-common"
+          - "%{_kf5_htmldir}/*"
