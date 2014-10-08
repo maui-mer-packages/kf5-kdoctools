@@ -7,7 +7,6 @@ Summary      : KDE Frameworks 5 Tier 2 addon for documentation
 Description  : |
   Provides tools to generate documentation in various format from DocBook files.
 URL          : http://www.kde.org
-SetupOptions : -q -n %{name}-%{version}/upstream
 
 Sources:
     - "%{name}-%{version}.tar.xz"
